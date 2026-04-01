@@ -1,75 +1,424 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Daniel N. Hill</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="./css/font-gscholar.css">
-<link rel="stylesheet" type="text/css" href="./css/tooltip.css"> <!-- Taken from a gist by vasa-chi -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel N. Hill - ML Researcher & Neuroscientist</title>
+    <meta name="description" content="Daniel Hill is a machine learning researcher at Meta working on neural wristband technology. Previously neuroscientist studying motor control and brain-computer interfaces.">
+    <meta name="keywords" content="Daniel Hill, machine learning, neuroscience, Meta, brain-computer interface, neural wristband, BCI, motor control">
+    <meta name="author" content="Daniel N. Hill">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Daniel N. Hill - ML Researcher & Neuroscientist">
+    <meta property="og:description" content="ML researcher at Meta working on neural wristband technology. Background in neuroscience and brain-computer interfaces.">
+    <meta property="og:url" content="http://danielnhill.com">
+    <meta property="og:image" content="http://danielnhill.com/images/headshot.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Daniel N. Hill - ML Researcher & Neuroscientist">
+    <meta name="twitter:description" content="ML researcher at Meta working on neural wristband technology.">
+    <meta name="twitter:image" content="http://danielnhill.com/images/headshot.jpg">
+    <meta name="twitter:creator" content="@danamics">
+    
+    <link rel="canonical" href="http://danielnhill.com">
+    <link rel="shortcut icon" href="./images/glasses.ico">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Daniel N. Hill",
+        "jobTitle": "Machine Learning Researcher",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Meta"
+        },
+        "url": "http://danielnhill.com",
+        "sameAs": [
+            "https://www.linkedin.com/in/danamics/",
+            "https://github.com/danamics",
+            "https://twitter.com/danamics",
+            "http://scholar.google.com/citations?user=PiLAyg0AAAAJ"
+        ],
+        "alumniOf": "University of California San Diego",
+        "knowsAbout": ["Machine Learning", "Neuroscience", "Brain-Computer Interfaces", "Motor Control"]
+    }
+    </script>
+    
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #64748b;
+            --accent-color: #0f172a;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --border-light: #e2e8f0;
+            --max-width: 1000px;
+        }
 
-<link rel="shortcut icon" href="./images/glasses.ico" />
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--accent-color);
+            background: white;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            font-size: 1.25rem;
+            transition: color 0.2s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--bg-light) 0%, white 100%);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .hero-text h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .cta-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37,99,235,0.3);
+        }
+
+        .cta-btn.secondary {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid var(--border-light);
+        }
+
+        .cta-btn.secondary:hover {
+            background: var(--bg-light);
+            border-color: var(--primary-color);
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-color);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .about-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .about-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Fun Section */
+        .fun {
+            padding: 4rem 0;
+            background: var(--bg-light);
+        }
+
+        .fun-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .fun-content h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .fun-content p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .arcade-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .arcade-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(255,107,107,0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--accent-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer p {
+            color: #94a3b8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-image {
+                justify-self: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .cta-links {
+                justify-content: center;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .social-links {
+                order: -1;
+            }
+        }
+    </style>
 </head>
-<body style="padding-top: 60px">
-
-
- <div class="navbar navbar-inverse navbar-fixed-top" >
-    <div class="navbar-inner">
+<body>
+    <header class="header">
         <div class="container">
-
-            <div class="navbar-header">            
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>                        
-                </button>
-                <a class="navbar-brand" href="#">Daniel N. Hill</a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="myNavbar">
-            
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a class="tooltipped tooltipped-s" data-tooltip="LinkedIn profile" href="https://www.linkedin.com/in/danamics/" target="_blank"><span class="fa fa-linkedin fa-2x "></span></a>
-                    <li><a class="tooltipped tooltipped-s" data-tooltip="GitHub page" href="https://github.com/danamics" target="_blank"><span class="fa fa-github fa-2x "></span></a>
-                    <li><a class="tooltipped tooltipped-s" data-tooltip="Twitter account" href="https://twitter.com/danamics" target="_blank"><span class="fa fa-twitter fa-2x "></span></a>
-                    <li><a class="tooltipped tooltipped-s" data-tooltip="YouTube channel" href="https://www.youtube.com/user/danamics" target="_blank"><span class="fa fa-youtube fa-2x "></span></a>
-                    <li><a class="tooltipped tooltipped-s" data-tooltip="Google Scholar profile" href="http://scholar.google.com/citations?user=PiLAyg0AAAAJ" target="_blank"><span class="gs gs-icon gs-2x"></span></a>
-                    <li><a class="tooltipped tooltipped-s" data-tooltip="E-mail me" href="mailto:daniel.n.hill@gmail.com" target="_blank"><span class="fa fa-envelope fa-2x"></span></a> 
-                </ul>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="jumbotron">
-        <div class="row">
-            <div class="col-lg-3">  <img src="./images/headshot.jpg" class="img-responsive" alt="Handsome devil"> </div>
-            <div class="col-lg-8" style="text-align: justify;">
-                <p>Hey there, I'm Dan. </p>
-                <p> I am a computer scientist turned neuroscientist turned machine learning scientist living in the Bay Area.  I currently manage a machine 
-learning team for Amazon Search in Berkeley, CA. Check out  my <a href="./hill_daniel_resume.pdf">resume</a> or <a 
-href="./hill_daniel_cv.pdf">CV</a>.</p>
-                <p> Also, here's <a href='./blammo/index.html'> a link </a>to the web page for the arcade machine that I built in 2005.  The games and the web design are a blast from the past!      
-            </div>
-        </div>
-    </div>
-</div>
-
-<footer class="footer">
-                <div class="container">
-                       <p style="text-align: center">
-                        © 2021 Daniel N. Hill - Last updated 2/1/2022.
-                    </p>
+            <nav class="nav">
+                <a href="#" class="logo">Daniel N. Hill</a>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/danamics/" target="_blank" title="LinkedIn" aria-label="LinkedIn profile">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="https://github.com/danamics" target="_blank" title="GitHub" aria-label="GitHub profile">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://twitter.com/danamics" target="_blank" title="Twitter" aria-label="Twitter profile">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                    </a>
+                    <a href="https://www.youtube.com/user/danamics" target="_blank" title="YouTube" aria-label="YouTube channel">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                    <a href="http://scholar.google.com/citations?user=PiLAyg0AAAAJ" target="_blank" title="Google Scholar" aria-label="Google Scholar profile">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10S2 17.514 2 12 6.486 2 12 2zm0 3c-.552 0-1 .448-1 1v4l-2.5 2.5c-.39.39-.39 1.024 0 1.414s1.024.39 1.414 0L12 11.828V6c0-.552-.448-1-1-1z"/></svg>
+                    </a>
+                    <a href="mailto:daniel.n.hill@gmail.com" title="Email" aria-label="Send email">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </a>
                 </div>
-</footer>
-    <script src="http://code.jquery.com/jquery.min.js"></script>
-     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <img src="./images/headshot.jpg" alt="Daniel Hill" class="hero-image">
+                    <div class="hero-text">
+                        <h1>Hey there, I'm Dan.</h1>
+                        <p class="subtitle">ML Researcher at Meta • Neuroscientist • BCI Pioneer</p>
+                        <p>I'm a machine learning researcher at Meta working on neural wristband technology — developing brain-computer interfaces that let you control devices with just your thoughts and neural signals. My journey from computer science to neuroscience to ML has been driven by a fascination with understanding and augmenting human motor control.</p>
+                        <div class="cta-links">
+                            <a href="./hill_daniel_resume.pdf" class="cta-btn">View Resume</a>
+                            <a href="./hill_daniel_cv.pdf" class="cta-btn secondary">Academic CV</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about">
+            <div class="container">
+                <h2 class="section-title">What I Do</h2>
+                <div class="about-grid">
+                    <div class="about-card">
+                        <h3>🧠 Neural Interfaces</h3>
+                        <p>At Meta, I work on the neural wristband project — developing non-invasive brain-computer interfaces that decode neural signals from your wrist to enable intuitive control of AR/VR devices. It's the future of human-computer interaction.</p>
+                    </div>
+                    <div class="about-card">
+                        <h3>🔬 Research Background</h3>
+                        <p>My neuroscience research focused on motor control and sensorimotor integration. I studied how the brain controls movement, particularly in rodent whisking behavior, using computational models and electrophysiology.</p>
+                    </div>
+                    <div class="about-card">
+                        <h3>🤖 Machine Learning</h3>
+                        <p>I apply ML techniques to decode neural signals, understand motor patterns, and build predictive models of brain activity. The intersection of neuroscience and AI is where the most exciting breakthroughs happen.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="fun">
+            <div class="container">
+                <div class="fun-content">
+                    <h2>🕹️ Time Capsule</h2>
+                    <p>Back in 2005, I built a custom arcade machine from scratch — complete with classic games and wonderfully dated web design. It's a fun blast from the past that captures the spirit of DIY maker culture before it was cool.</p>
+                    <a href="./blammo/index.html" class="arcade-link">
+                        <span>🎮</span>
+                        Explore Blammo!
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Daniel N. Hill • Last updated March 2026</p>
+        </div>
+    </footer>
 </body>
-</html>                                     
+</html>
