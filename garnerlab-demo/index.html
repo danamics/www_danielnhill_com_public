@@ -18,12 +18,16 @@
             window.location.href = 'password.html';
         }
     </script>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <h1>Garner Lab</h1>
-                <span class="nav-subtitle">Harvard Medical School</span>
+                <img src="lab-logo.png" alt="Garner Lab Logo" class="logo-image">
+                <div class="logo-text">
+                    <h1>Garner Lab</h1>
+                    <span class="nav-subtitle">Harvard Medical School</span>
+                </div>
             </div>
             <div class="nav-links">
                 <a href="#research" class="nav-link">Research</a>
@@ -82,21 +86,73 @@
     <section id="research" class="research-overview">
         <div class="container">
             <h2 class="section-title">Our Research Focus</h2>
+            <div class="research-philosophy">
+                <blockquote class="philosophy-quote">
+                    "The brain is fundamentally composed of the same components as yogurt.. carbon, phosphorus, oxygen, nitrogen. Yet the brain does something that yogurt does not do. The brain makes memories from experience interacting with the world around it and decides what it will do with its future given the expectations it has about that future."
+                </blockquote>
+            </div>
+            <div class="research-description">
+                <p>We have a narrative of our lives. We know who we are or we know that we must experience more and contemplate harder to know who we are. This concept of ourselves makes it possible for us to decide what to do next. Go for a bike ride because the sound of nature feels rejuvenating, take that new job because working with undermining people is exhausting and exciting opportunities await elsewhere, spend some well deserved quality time with good friends.</p>
+                
+                <p>The goal of research in the Garner lab is to understand <strong>how the brain takes what it has already learned to implement expectations that alter our interpretation of what we see and hear</strong>. Our work focuses on how memory regulates the way auditory and visual information interact in the brain to create perception.</p>
+            </div>
+            
             <div class="research-grid">
                 <div class="research-card">
                     <div class="research-icon">🧠</div>
-                    <h3>Memory Processing</h3>
-                    <p>Understanding how memories are formed, stored, and retrieved in neural networks.</p>
-                </div>
-                <div class="research-card">
-                    <div class="research-icon">👁️</div>
-                    <h3>Multisensory Integration</h3>
-                    <p>Exploring how the brain combines information from multiple sensory modalities.</p>
+                    <h3>Circuit Mechanisms</h3>
+                    <p>Multisensory perception and the role of long-range projections in cortex.</p>
                 </div>
                 <div class="research-card">
                     <div class="research-icon">🔮</div>
-                    <h3>Predictive Coding</h3>
-                    <p>Investigating how memories shape our expectations and predictions about the world.</p>
+                    <h3>Internal Models & Memory</h3>
+                    <p>How the brain's internal models and stored memories interact with incoming sensory information to create perceptions and predictions.</p>
+                </div>
+                <div class="research-card">
+                    <div class="research-icon">⚡</div>
+                    <h3>Sensorimotor Pathways</h3>
+                    <p>Neural pathways that allow animals to move in response to sensory stimulation and plasticity for therapeutic applications.</p>
+                </div>
+            </div>
+            
+            <div class="research-methods">
+                <h3>Our Approach</h3>
+                <p>The Garner lab uses mice and makes use of many techniques in chemistry, biology, optics, computer science, behavior, and psychology. We engineer virtual realities for empirical control of animals' worlds and sensory environments and use an array of genetic approaches to tag, monitor, and manipulate neural circuits. We use 2-photon calcium imaging to probe neural dynamics as animals perceive, learn, and move their bodies.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="publications-section">
+        <div class="container">
+            <h2 class="section-title">Recent Publications</h2>
+            <div class="publications-list">
+                <div class="publication-item">
+                    <h3>A cortical circuit for audio-visual predictions</h3>
+                    <p class="authors">Garner AR and Keller GB. (2022)</p>
+                    <p class="journal">Nature Neuroscience</p>
+                    <a href="https://rdcu.be/cCuKC" target="_blank" class="publication-link">Read Paper →</a>
+                </div>
+                
+                <div class="publication-item">
+                    <h3>What does Juneteenth mean in STEMM?</h3>
+                    <p class="authors">Beasley HK, Clark AL, Garner A, et al. (2023)</p>
+                    <p class="journal">Cell, 186(12):2501-2505</p>
+                    <a href="https://www.cell.com/cell/fulltext/S0092-8674(23)00530-5" target="_blank" class="publication-link">Read Paper →</a>
+                </div>
+                
+                <div class="publication-item">
+                    <h3>Generation of a synthetic memory trace</h3>
+                    <p class="authors">Garner AR, Rowland DC, Hwang SY, et al. (2012)</p>
+                    <p class="journal">Science, 335: 1513-16</p>
+                    <a href="https://science.sciencemag.org/content/335/6075/1513" target="_blank" class="publication-link">Read Paper →</a>
+                </div>
+                
+                <div class="publication-item">
+                    <h3>Transgenic mice for intersectional targeting of neural sensors</h3>
+                    <p class="authors">Madisen L, Garner AR, Shimaoka D, et al. (2015)</p>
+                    <p class="journal">Neuron, 85: 942-58</p>
+                    <a href="https://www.cell.com/neuron/fulltext/S0896-6273(15)00137-3" target="_blank" class="publication-link">Read Paper →</a>
                 </div>
             </div>
         </div>
@@ -105,32 +161,177 @@
     <!-- Team Section -->
     <section id="team" class="team-section">
         <div class="container">
-            <h2 class="section-title">Our Team</h2>
-            <p class="section-subtitle">Brilliant minds working together to unlock the secrets of memory and perception</p>
-            <div class="team-cta">
-                <a href="#join" class="btn btn-primary">Join Our Research Team</a>
+            <h2 class="section-title">Meet Our Team</h2>
+            <p class="section-subtitle">Firstly, we want to thank our mice. Without them, none of our research would be possible, and we love them for all their efforts.</p>
+            
+            <div class="team-grid">
+                <!-- Principal Investigator -->
+                <div class="team-card featured">
+                    <div class="team-member-image">
+                        <div class="placeholder-avatar">AG</div>
+                    </div>
+                    <h3>Dr. Aleena R. Garner</h3>
+                    <p class="team-role">Principal Investigator</p>
+                    <p class="team-bio">Received B.S. in Biochemistry and Psychology from University of Oregon. Ph.D. in Neuroscience from UC San Diego (Mayford lab). Scientist at Allen Institute for Brain Science, postdoc at Friedrich Miescher Institute (Keller lab). Winner of the Max Burger Prize for postdoctoral work.</p>
+                    <a href="https://pubmed.ncbi.nlm.nih.gov?sort=date&sort_order=asc&term=aleena%20garner" target="_blank" class="team-link">View Publications →</a>
+                </div>
+                
+                <!-- Team Members -->
+                <div class="team-card">
+                    <div class="team-member-image">
+                        <div class="placeholder-avatar">NS</div>
+                    </div>
+                    <h3>Natalie Shulstad, B.S.</h3>
+                    <p class="team-role">Lab Manager & Research Assistant</p>
+                    <p class="team-bio">B.S. in Neurobiology and Philosophy from UW-Madison. Previously worked in software design and data analysis at Epic Systems and was a research assistant at the Center for Healthy Minds.</p>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-member-image">
+                        <div class="placeholder-avatar">AA</div>
+                    </div>
+                    <h3>Alexander Asilador, Ph.D.</h3>
+                    <p class="team-role">Postdoctoral Fellow</p>
+                    <p class="team-bio">B.S. in Biology from UT San Antonio, Ph.D. in Neuroscience from University of Illinois, Urbana. Expert in multi-unit recordings, auditory cortex, and computational neuroscience.</p>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-member-image">
+                        <div class="placeholder-avatar">GN</div>
+                    </div>
+                    <h3>Gavin Nolan, B.S.</h3>
+                    <p class="team-role">Research Assistant</p>
+                    <p class="team-bio">B.S. in Neuroscience and Biology from Emmanuel College. Previously studied at University of Leeds and was a research assistant with Dr. Elizabeth Crofton. Musician and composer.</p>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-member-image">
+                        <div class="placeholder-avatar">AD</div>
+                    </div>
+                    <h3>Anushka Darade, B. Tech.</h3>
+                    <p class="team-role">Imaging Data Infrastructure Specialist</p>
+                    <p class="team-bio">B.Tech. in Computer Engineering from K.J. Somaiya College, Mumbai. M.S. candidate at Northeastern University. Experience in data analysis, e-commerce, and machine learning for Alzheimer's detection.</p>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-member-image">
+                        <div class="placeholder-avatar">LK</div>
+                    </div>
+                    <h3>Lea Klein, B.Sc.</h3>
+                    <p class="team-role">Master's Student</p>
+                    <p class="team-bio">Master's student from University of Vienna, Austria. Previously researched insular cortex in reinforcement learning (Melzer lab) and THC effects on neuroblastoma cells (Moldzio lab).</p>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-member-image">
+                        <div class="placeholder-avatar">JP</div>
+                    </div>
+                    <h3>Jean-Baptiste Poussin, B.S.</h3>
+                    <p class="team-role">Master's Student</p>
+                    <p class="team-bio">Master's student from École Polytechnique Fédérale de Lausanne (EPFL), Switzerland. Experience developing flexible microneedle arrays for EMG and working at Medtronic on medical device characterization.</p>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-member-image">
+                        <div class="placeholder-avatar">AJ</div>
+                    </div>
+                    <h3>Avlinn Jaskowski</h3>
+                    <p class="team-role">Reading and Writing Memories Specialist</p>
+                    <p class="team-bio">Undergraduate at Northeastern University studying Neuroscience, pursuing cooperative education internship. Previously studied in Dublin, Ireland. Dance, piano, and voice instructor.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- News & Publications -->
+    <!-- News Section -->
     <section id="news" class="news-section">
         <div class="container">
+            <h2 class="section-title">Latest Lab News</h2>
             <div class="news-grid">
-                <div class="news-column">
-                    <h2>Latest News</h2>
-                    <div class="news-item">
-                        <h3>Recent Research Findings</h3>
-                        <p>Stay updated with our latest discoveries and publications in memory research.</p>
-                        <a href="#" class="read-more">Read more →</a>
-                    </div>
+                <div class="news-item featured">
+                    <h3>Winners of HMS Neurobiology Lab Olympics! 🏆</h3>
+                    <p>Celebrating our accomplishments with an ice cream outing! Our Data Informatics Specialist Anushka won in Pipetting, and Avlinn and Gavin won the PPE Relay!</p>
+                    <span class="news-date">Recent</span>
                 </div>
-                <div class="news-column">
-                    <h2>Publications</h2>
-                    <div class="news-item">
-                        <h3>View Our Research</h3>
-                        <p>Explore our peer-reviewed publications and research contributions to the field.</p>
-                        <a href="#publications" class="read-more">View publications →</a>
+                
+                <div class="news-item">
+                    <h3>Major Milestone for 2025!</h3>
+                    <p>Lea and Gavin imaging neural activity while optically stimulating input from our favorite brain region while mice explore an audio-visual virtual reality world using all the software we designed!</p>
+                    <span class="news-date">January 2025</span>
+                </div>
+                
+                <div class="news-item">
+                    <h3>Dr. Aleena Garner Wins Max Burger Prize</h3>
+                    <p>Recognized for her outstanding postdoctoral work at the Friedrich Miescher Institute for Biomedical Research.</p>
+                    <span class="news-date">2024</span>
+                </div>
+                
+                <div class="news-item">
+                    <h3>Lab's 1st Birthday Celebration! 🎂</h3>
+                    <p>Celebrating our first year with a magnificent lab crew dinner and birthday breakfast from one of our favorite restaurants.</p>
+                    <span class="news-date">March 2023</span>
+                </div>
+                
+                <div class="news-item">
+                    <h3>Pumpkin Carving Contest Winners! 🎃</h3>
+                    <p>These brilliantly creative folks won the HMS Neurobiology Pumpkin Carving Contest!</p>
+                    <span class="news-date">Fall 2024</span>
+                </div>
+                
+                <div class="news-item">
+                    <h3>Grand Opening!</h3>
+                    <p>Welcome to our spectacular, newly renovated lab. Time to unpack and start the science!</p>
+                    <span class="news-date">March 2022</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Us Section -->
+    <section id="join" class="join-section">
+        <div class="container">
+            <h2 class="section-title">Join Our Team!</h2>
+            <div class="join-content">
+                <div class="position-posting">
+                    <h3>Postdoctoral Position in Neuroscience</h3>
+                    <p class="position-subtitle">Memory, Perception, and Predictive Processing</p>
+                    
+                    <div class="position-details">
+                        <h4>Research Areas:</h4>
+                        <ul>
+                            <li>Circuit mechanisms of multisensory perception and long-range projections in cortex</li>
+                            <li>Neural circuitry and computations underlying brain's internal models and stored memories</li>
+                            <li>Neural pathways for sensorimotor responses and plasticity for therapeutic applications</li>
+                        </ul>
+                        
+                        <h4>Required Qualifications:</h4>
+                        <ul>
+                            <li>Experience in 2-photon imaging, wide field imaging, or electrophysiology</li>
+                            <li>Programming proficiency in Matlab, Python, or Labview</li>
+                            <li>Experience working with animals for research</li>
+                        </ul>
+                        
+                        <h4>Preferred Qualifications:</h4>
+                        <ul>
+                            <li>Experience in immunohistochemistry and confocal imaging</li>
+                            <li>Experience working with live rodents</li>
+                            <li>Experience in stereotaxic surgeries</li>
+                            <li>Experience working with genetically modified viruses</li>
+                        </ul>
+                        
+                        <div class="compensation">
+                            <p><strong>Compensation:</strong> HMS compensates postdoctoral fellows using an internal pay scale based on years of experience, starting at $65,000 at Level 0.</p>
+                        </div>
+                        
+                        <div class="apply-section">
+                            <h4>How to Apply:</h4>
+                            <p>Email <a href="mailto:Aleena_Garner@hms.harvard.edu">Dr. Aleena Garner</a> with:</p>
+                            <ul>
+                                <li>CV or résumé</li>
+                                <li>Cover letter (one page max) describing your experience in physiology, programming languages, and interest in this position</li>
+                            </ul>
+                            <a href="mailto:Aleena_Garner@hms.harvard.edu?subject=Postdoctoral Position Application" class="btn btn-primary">Apply Now</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -169,7 +370,8 @@
                 <div class="footer-section">
                     <h3>Garner Lab</h3>
                     <p>Harvard Medical School<br>
-                    Department of Neuroscience</p>
+                    Department of Neurobiology</p>
+                    <p><a href="mailto:Aleena_Garner@hms.harvard.edu">Aleena_Garner@hms.harvard.edu</a></p>
                 </div>
                 <div class="footer-section">
                     <h3>Quick Links</h3>
@@ -184,8 +386,8 @@
                     <h3>Connect</h3>
                     <ul>
                         <li><a href="#news">Lab News</a></li>
-                        <li><a href="#press">News & Press</a></li>
-                        <li><a href="#links">Resources</a></li>
+                        <li><a href="https://pubmed.ncbi.nlm.nih.gov?sort=date&sort_order=asc&term=aleena%20garner" target="_blank">Publications (PubMed)</a></li>
+                        <li><a href="https://hms.harvard.edu" target="_blank">Harvard Medical School</a></li>
                     </ul>
                 </div>
             </div>
