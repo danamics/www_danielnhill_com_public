@@ -1,0 +1,41 @@
+name: Deploy Website
+
+on:
+  push:
+    branches: [ master, preview ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Install sshpass
+      run: sudo apt-get update && sudo apt-get install -y sshpass
+      
+    - name: Setup SSH with password
+      run: |
+        mkdir -p ~/.ssh
+        echo "StrictHostKeyChecking no" >> ~/.ssh/config
+        
+    - name: Deploy to Preview
+      if: github.ref == 'refs/heads/preview'
+      run: |
+        echo "🦀 Deploying preview branch to preview.danielnhill.com"
+        sshpass -p '${{ secrets.SSH_PASSWORD }}' ssh danielnh@143.95.39.87 << 'EOF'
+          cd preview.danielnhill.com
+          git pull origin preview
+          echo "Preview site updated: $(date)"
+        EOF
+        
+    - name: Deploy to Production
+      if: github.ref == 'refs/heads/master'
+      run: |
+        echo "🦀 Deploying master branch to danielnhill.com"
+        sshpass -p '${{ secrets.SSH_PASSWORD }}' ssh danielnh@143.95.39.87 << 'EOF'
+          cd public_html
+          git pull origin master
+          echo "Live site updated: $(date)"
+        EOF
