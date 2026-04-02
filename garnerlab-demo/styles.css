@@ -573,6 +573,12 @@ h1, h2, h3, h4, h5, h6 {
     background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
 }
 
+.team-card.visiting {
+    border: 2px solid var(--accent-color);
+    background: linear-gradient(135deg, #fef3c7 0%, var(--white) 100%);
+    position: relative;
+}
+
 .team-member-image {
     margin-bottom: 1.5rem;
 }
@@ -590,6 +596,42 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     margin: 0 auto;
     box-shadow: var(--shadow-md);
+}
+
+.team-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto;
+    box-shadow: var(--shadow-md);
+    display: block;
+}
+
+.april-fools-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: linear-gradient(135deg, #ff6b6b, #feca57);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-5px);
+    }
+    60% {
+        transform: translateY(-3px);
+    }
 }
 
 .team-card h3 {
@@ -883,6 +925,27 @@ h1, h2, h3, h4, h5, h6 {
 
 .demo-notice a:hover {
     text-decoration: underline;
+}
+
+.april-fools-notice {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #ff6b6b, #feca57);
+    color: white;
+    border-radius: var(--border-radius);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-align: center;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
 }
 
 /* Animations */
