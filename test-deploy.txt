@@ -1,0 +1,3 @@
+DEPLOY TEST: 2026-04-03 07:49 AM
+Version: ec5d3b2
+This file should appear if deployment is working.
