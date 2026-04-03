@@ -24,20 +24,40 @@ jobs:
       if: github.ref == 'refs/heads/preview'
       run: |
         echo "🦀 Deploying preview branch to preview.danielnhill.com"
-        sshpass -p '${{ secrets.SSH_PASSWORD }}' ssh danielnh@143.95.39.87 << 'EOF'
+        sshpass -p '${{ secrets.SSH_PASSWORD }}' ssh danielnh@143.95.39.87 'bash -s' << 'EOF'
           set -e
+          echo "📁 Changing to preview.danielnhill.com directory..."
           cd preview.danielnhill.com || { echo "❌ Failed to cd to preview.danielnhill.com"; exit 1; }
+          echo "📊 Git status before pull:"
+          git status --porcelain
+          echo "🔄 Running git pull..."
           git pull origin preview || { echo "❌ Git pull failed - check for diverged branches"; exit 1; }
           echo "✅ Preview site updated: $(date)"
+          echo "📊 Git status after pull:"
+          git log --oneline -1
         EOF
+        if [ $? -ne 0 ]; then
+          echo "❌ SSH command failed"
+          exit 1
+        fi
         
     - name: Deploy to Production
       if: github.ref == 'refs/heads/master'
       run: |
         echo "🦀 Deploying master branch to danielnhill.com"
-        sshpass -p '${{ secrets.SSH_PASSWORD }}' ssh danielnh@143.95.39.87 << 'EOF'
+        sshpass -p '${{ secrets.SSH_PASSWORD }}' ssh danielnh@143.95.39.87 'bash -s' << 'EOF'
           set -e
+          echo "📁 Changing to public_html directory..."
           cd public_html || { echo "❌ Failed to cd to public_html"; exit 1; }
+          echo "📊 Git status before pull:"
+          git status --porcelain
+          echo "🔄 Running git pull..."
           git pull origin master || { echo "❌ Git pull failed - check for diverged branches"; exit 1; }
           echo "✅ Live site updated: $(date)"
+          echo "📊 Git status after pull:"
+          git log --oneline -1
         EOF
+        if [ $? -ne 0 ]; then
+          echo "❌ SSH command failed"
+          exit 1
+        fi
