@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            background: #1a1a2e;
             color: white;
             min-height: 100vh;
             overflow-x: hidden;
@@ -23,7 +23,6 @@
             text-align: center;
             padding: 20px;
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
         }
 
         .game-title {
@@ -345,9 +344,38 @@
                 font-size: 2rem;
             }
         }
+        
+        /* Mobile Debugging and Fixes */
+        @media (max-width: 768px) {
+            * {
+                border: 1px solid red !important;
+                background: yellow !important;
+                color: black !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                display: block !important;
+            }
+            
+            .game-header {
+                background: blue !important;
+                padding: 20px !important;
+            }
+            
+            .casino-floor {
+                background: green !important;
+                min-height: 300px !important;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Debug info for mobile -->
+    <div style="background: red; color: white; padding: 10px; position: fixed; top: 0; left: 0; z-index: 9999;">
+        DEBUG: Screen size: <span id="screen-size"></span>
+    </div>
+    <script>
+        document.getElementById('screen-size').textContent = screen.width + 'x' + screen.height;
+    </script>
     <a href="index.html" class="back-link">← Back to Site</a>
     
     <div class="timer-bar" id="timer-bar"></div>
