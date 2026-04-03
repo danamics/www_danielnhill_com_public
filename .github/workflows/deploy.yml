@@ -25,9 +25,10 @@ jobs:
       run: |
         echo "🦀 Deploying preview branch to preview.danielnhill.com"
         sshpass -p '${{ secrets.SSH_PASSWORD }}' ssh danielnh@143.95.39.87 << 'EOF'
-          cd preview.danielnhill.com
-          git pull origin preview
-          echo "Preview site updated: $(date)"
+          set -e
+          cd preview.danielnhill.com || { echo "❌ Failed to cd to preview.danielnhill.com"; exit 1; }
+          git pull origin preview || { echo "❌ Git pull failed - check for diverged branches"; exit 1; }
+          echo "✅ Preview site updated: $(date)"
         EOF
         
     - name: Deploy to Production
@@ -35,7 +36,8 @@ jobs:
       run: |
         echo "🦀 Deploying master branch to danielnhill.com"
         sshpass -p '${{ secrets.SSH_PASSWORD }}' ssh danielnh@143.95.39.87 << 'EOF'
-          cd public_html
-          git pull origin master
-          echo "Live site updated: $(date)"
+          set -e
+          cd public_html || { echo "❌ Failed to cd to public_html"; exit 1; }
+          git pull origin master || { echo "❌ Git pull failed - check for diverged branches"; exit 1; }
+          echo "✅ Live site updated: $(date)"
         EOF
