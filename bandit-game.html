@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beat the Bandit - Dan Hill's Multi-Armed Bandit Challenge</title>
+    <title>Beat the Bandit v2.1 - Dan Hill's Multi-Armed Bandit Challenge</title>
     <style>
         * {
             margin: 0;
@@ -370,11 +370,12 @@
 </head>
 <body>
     <!-- Debug info for mobile -->
-    <div style="background: red; color: white; padding: 10px; position: fixed; top: 0; left: 0; z-index: 9999;">
-        DEBUG: Screen size: <span id="screen-size"></span>
+    <div style="background: red; color: white; padding: 10px; position: fixed; top: 0; left: 0; z-index: 9999; font-size: 12px;">
+        v2.1 | Screen: <span id="screen-size"></span> | <span id="timestamp"></span>
     </div>
     <script>
         document.getElementById('screen-size').textContent = screen.width + 'x' + screen.height;
+        document.getElementById('timestamp').textContent = new Date().toLocaleTimeString();
     </script>
     <a href="index.html" class="back-link">← Back to Site</a>
     
