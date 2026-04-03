@@ -234,16 +234,30 @@
         }
 
         .about-card h3 {
-            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .about-card h3 {
             font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .arcade-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        .arcade-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(255,107,107,0.4);
         }
 
         .about-card p {
@@ -408,7 +422,11 @@
                     </div>
                     <div class="about-card">
                         <h3>🕹️ Homemade Arcade Time Capsule</h3>
-                        <p>Back in 2005, I built a custom arcade machine from scratch — complete with classic games. Both the arcade and the accompanying <a href="./blammo/index.html">website</a> are a blast from the past.</p>
+                        <p>Back in 2005, I built a custom arcade machine from scratch — complete with classic games. Both the arcade and the accompanying website are a blast from the past.</p>
+                        <a href="./blammo/index.html" class="arcade-link">
+                            <span>🎮</span>
+                            Explore Blammo!
+                        </a>
                     </div>
                 </div>
             </div>
