@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beat the Bandit - MOBILE FIX v3.0</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2a2a3e;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .game-header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .game-title {
+            font-size: 2rem;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .game-subtitle {
+            font-size: 1rem;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        .casino-floor {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .simple-machine {
+            display: inline-block;
+            width: 100px;
+            height: 150px;
+            background-color: #444;
+            border: 2px solid #666;
+            border-radius: 10px;
+            margin: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .simple-machine:hover {
+            background-color: #555;
+            border-color: #ffd700;
+        }
+
+        .machine-label {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            right: 0;
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .test-content {
+            margin: 20px;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .game-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-header">
+        <h1 class="game-title">🎰 Beat the Bandit</h1>
+        <p class="game-subtitle">Mobile-Compatible Version v3.0</p>
+    </div>
+
+    <div class="casino-floor">
+        <div class="simple-machine" onclick="playSound()">
+            <div class="machine-label">Machine 1</div>
+        </div>
+        <div class="simple-machine" onclick="playSound()">
+            <div class="machine-label">Machine 2</div>
+        </div>
+        <div class="simple-machine" onclick="playSound()">
+            <div class="machine-label">Machine 3</div>
+        </div>
+    </div>
+
+    <div class="test-content">
+        <h3>Debug Info:</h3>
+        <p><strong>User Agent:</strong> <span id="user-agent"></span></p>
+        <p><strong>Screen Size:</strong> <span id="screen-info"></span></p>
+        <p><strong>CSS Support:</strong> <span id="css-support"></span></p>
+    </div>
+
+    <script>
+        // Debug info
+        document.getElementById('user-agent').textContent = navigator.userAgent;
+        document.getElementById('screen-info').textContent = screen.width + 'x' + screen.height;
+        
+        // Test CSS support
+        let support = [];
+        if (CSS && CSS.supports('backdrop-filter', 'blur(10px)')) {
+            support.push('backdrop-filter');
+        }
+        if (CSS && CSS.supports('background', 'linear-gradient(135deg, red, blue)')) {
+            support.push('gradients');
+        }
+        document.getElementById('css-support').textContent = support.length ? support.join(', ') : 'basic only';
+
+        function playSound() {
+            alert('Machine clicked! (This would be the game logic)');
+        }
+    </script>
+</body>
+</html>
