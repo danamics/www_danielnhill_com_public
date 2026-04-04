@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Deployment test: 2026-04-03 10:15 AM EDT - Testing GitHub Actions workflow -->
+<!-- PREVIEW deployment FIXED: 2026-04-03 12:00 PM EDT - After git reset --hard origin/preview -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,7 +21,6 @@
     <meta name="twitter:title" content="Daniel N. Hill - ML Researcher & Neuroscientist">
     <meta name="twitter:description" content="ML researcher at Meta working on neural wristband technology.">
     <meta name="twitter:image" content="http://danielnhill.com/images/profile-dan-llama.jpg">
-    <meta name="twitter:creator" content="@danamics">
     
     <link rel="canonical" href="http://danielnhill.com">
     <link rel="shortcut icon" href="./images/glasses.ico">
@@ -69,7 +68,13 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
             line-height: 1.6;
             color: var(--accent-color);
-            background: white;
+            background-color: #f8fafc;
+            background-image: 
+                linear-gradient(rgba(248,250,252,0.4), rgba(248,250,252,0.4)),
+                url('./images/background-pattern.jpg');
+            background-size: 600px 600px;
+            background-repeat: repeat;
+            filter: contrast(1.1);
         }
 
         .container {
@@ -122,14 +127,27 @@
         /* Hero Section */
         .hero {
             padding: 4rem 0;
-            background: linear-gradient(135deg, var(--bg-light) 0%, white 100%);
+            position: relative;
         }
+
+        /* Clean hero without extra decorations */
 
         .hero-content {
             display: grid;
             grid-template-columns: 200px 1fr;
             gap: 3rem;
             align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(226,232,240,0.8);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
 
         .hero-image {
@@ -137,15 +155,38 @@
             height: 200px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 6px solid rgba(255,255,255,0.9);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+
+        .hero-image-container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            backdrop-filter: blur(5px);
+            z-index: -1;
         }
 
         .hero-text h1 {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: var(--accent-color);
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--primary-color) 70%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero-text .subtitle {
@@ -171,18 +212,18 @@
             display: inline-flex;
             align-items: center;
             padding: 0.75rem 1.5rem;
-            background: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), #4f46e5);
             color: white;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 12px;
             font-weight: 500;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
         }
 
         .cta-btn:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(37,99,235,0.3);
+            background: linear-gradient(135deg, #1d4ed8, #3730a3);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(37,99,235,0.4);
         }
 
         .cta-btn.secondary {
@@ -199,7 +240,10 @@
         /* About Section */
         .about {
             padding: 4rem 0;
+            position: relative;
         }
+
+        /* Clean about section */
 
         .section-title {
             font-size: 2rem;
@@ -213,19 +257,24 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 3rem;
+            position: relative;
+            z-index: 1;
         }
 
         .about-card {
-            background: white;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
             padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-light);
-            transition: all 0.3s ease;
+            border-radius: 16px;
+            border: 1px solid rgba(226,232,240,0.8);
+            transition: all 0.4s ease;
         }
 
         .about-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+            transform: translateY(-6px) rotate(0.5deg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            background: rgba(255,255,255,1);
+            border-color: rgba(37,99,235,0.2);
         }
 
         .about-card h3 {
@@ -233,6 +282,26 @@
             font-weight: 600;
             margin-bottom: 1rem;
             color: var(--accent-color);
+        }
+
+        .arcade-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        .arcade-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(255,107,107,0.4);
         }
 
         .about-card p {
@@ -288,7 +357,12 @@
             color: white;
             text-align: center;
             padding: 2rem 0;
+            position: relative;
         }
+
+        /* Clean footer */
+
+        /* Clean design without animations */
 
         .footer p {
             color: #94a3b8;
@@ -346,7 +420,7 @@
                     <a href="https://github.com/danamics" target="_blank" title="GitHub" aria-label="GitHub profile">
                         <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                     </a>
-                    <!-- Twitter link removed -->
+                    <!-- Twitter link removed (dead account) -->
                     <a href="https://www.youtube.com/user/danamics" target="_blank" title="YouTube" aria-label="YouTube channel">
                         <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                     </a>
@@ -365,10 +439,12 @@
         <section class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <img src="./images/profile-dan-llama.jpg" alt="Daniel Hill with llama in the mountains" class="hero-image">
+                    <div class="hero-image-container">
+                        <img src="./images/profile-dan-llama.jpg" alt="Daniel Hill with llama in the mountains" class="hero-image">
+                    </div>
                     <div class="hero-text">
                         <h1>Hey there, I'm Dan.</h1>
-                        <p class="subtitle">ML Researcher at Meta • Neuroscientist • BCI Pioneer</p>
+                        <p class="subtitle">Researcher at Meta • ML Scientist • Neuroscientist</p>
                         <p>I'm a machine learning researcher at Meta working on neural wristband technology — developing brain-computer interfaces that let you control devices through neural signals. My journey from computer science to neuroscience to ML has been driven by a fascination with understanding and augmenting human motor control.</p>
                         <div class="cta-links">
                             <a href="./hill_daniel_resume.pdf" class="cta-btn">View Resume</a>
@@ -381,36 +457,33 @@
 
         <section class="about">
             <div class="container">
-                <h2 class="section-title">What I Do</h2>
+                <h2 class="section-title">About Me</h2>
                 <div class="about-grid">
                     <div class="about-card">
                         <h3>🧠 Neural Interfaces</h3>
-                        <p>At Meta, I work on the neural wristband project — developing non-invasive brain-computer interfaces that decode neural signals from your wrist to enable intuitive control of AR/VR devices. It's the future of human-computer interaction.</p>
+                        <p>At Meta, I work on the neural wristband project — developing non-invasive brain-computer interfaces that decode neural signals from your wrist to enable intuitive control of AR/VR devices. This research led to launching <a href="https://www.meta.com/emerging-tech/emg-wearable-technology/?srsltid=AfmBOopzczO-ggvCAD27wRQwz7CjuaEMD0NWovzIYdAVwtgvIFJDqliz" target="_blank">Neural Handwriting for the Meta Ray-Ban Display</a> glasses.</p>
                     </div>
                     <div class="about-card">
                         <h3>🔬 Research Background</h3>
-                        <p>My neuroscience research focused on motor control and sensorimotor integration. I studied how the brain controls movement, particularly in rodent whisking behavior, using computational models and electrophysiology.</p>
+                        <p>My neuroscience research focused on motor control and sensorimotor integration. I studied how the brain controls movement, particularly in rodent whisking behavior, using computational models and electrophysiology. See my full publication list on <a href="http://scholar.google.com/citations?user=PiLAyg0AAAAJ" target="_blank">Google Scholar</a>.</p>
                     </div>
                     <div class="about-card">
                         <h3>🤖 Machine Learning</h3>
-                        <p>I apply ML techniques to decode neural signals, understand motor patterns, and build predictive models of brain activity. The intersection of neuroscience and AI is where the most exciting breakthroughs happen.</p>
+                        <p>I've deployed ML systems at scale across deep learning, personalization, search, and multi-armed bandits. Currently I apply these techniques to decode neural signals, understand motor patterns, and build predictive models of brain activity.</p>
+                    </div>
+                    <div class="about-card">
+                        <h3>🕹️ Homemade Arcade Time Capsule</h3>
+                        <p>Back in 2005, I built a custom arcade machine from scratch — complete with classic games. Both the arcade and the accompanying website are a blast from the past.</p>
+                        <a href="./blammo/index.html" class="arcade-link">
+                            <span>🎮</span>
+                            Explore Blammo!
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="fun">
-            <div class="container">
-                <div class="fun-content">
-                    <h2>🕹️ Time Capsule</h2>
-                    <p>Back in 2005, I built a custom arcade machine from scratch — complete with classic games and wonderfully dated web design. It's a fun blast from the past that captures the spirit of DIY maker culture before it was cool.</p>
-                    <a href="./blammo/index.html" class="arcade-link">
-                        <span>🎮</span>
-                        Explore Blammo!
-                    </a>
-                </div>
-            </div>
-        </section>
+        <!-- Arcade content moved to About Me section -->
     </main>
 
     <footer class="footer">
@@ -419,4 +492,6 @@
         </div>
     </footer>
 </body>
-</html><!-- Auto-deployment test Thu Apr  2 19:15:42 EDT 2026 -->
+<!-- PREVIEW VERSION - Danny (PREVIEW) -->
+</html>
+<!-- Test automation trigger Thu Apr  2 19:43:30 EDT 2026 -->
