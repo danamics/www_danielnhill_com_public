@@ -69,7 +69,9 @@
             line-height: 1.6;
             color: var(--accent-color);
             background-color: #f8fafc;
-            background-image: url('./images/background-pattern.jpg');
+            background-image: 
+                linear-gradient(rgba(248,250,252,0.7), rgba(248,250,252,0.7)),
+                url('./images/background-pattern.jpg');
             background-size: 400px 400px;
             background-repeat: repeat;
         }
@@ -124,7 +126,6 @@
         /* Hero Section */
         .hero {
             padding: 4rem 0;
-            background: linear-gradient(135deg, var(--bg-light) 0%, white 100%);
             position: relative;
         }
 
@@ -139,13 +140,42 @@
             z-index: 1;
         }
 
+        .hero-text {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(226,232,240,0.8);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
         .hero-image {
             width: 200px;
             height: 200px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 6px solid rgba(255,255,255,0.9);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+
+        .hero-image-container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            backdrop-filter: blur(5px);
+            z-index: -1;
         }
 
         .hero-text h1 {
@@ -408,7 +438,9 @@
         <section class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <img src="./images/profile-dan-llama.jpg" alt="Daniel Hill with llama in the mountains" class="hero-image">
+                    <div class="hero-image-container">
+                        <img src="./images/profile-dan-llama.jpg" alt="Daniel Hill with llama in the mountains" class="hero-image">
+                    </div>
                     <div class="hero-text">
                         <h1>Hey there, I'm Dan.</h1>
                         <p class="subtitle">Researcher at Meta • ML Scientist • Neuroscientist</p>
@@ -419,6 +451,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </section>
 
