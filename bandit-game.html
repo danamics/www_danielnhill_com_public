@@ -383,7 +383,7 @@
     
     <div class="game-header">
         <h1 class="game-title">🎰 Beat the Bandit</h1>
-        <p class="game-subtitle">I built algorithms that made Amazon $200M+ by solving this problem. Think you can do better?</p>
+        <p class="game-subtitle">Think you can beat a machine learning algorithm at this classic optimization problem?</p>
         
         <div class="stats-bar">
             <div class="stat">
@@ -395,7 +395,7 @@
                 <div class="stat-value" id="pulls-remaining">100</div>
             </div>
             <div class="stat">
-                <div class="stat-label">Dan's Algorithm</div>
+                <div class="stat-label">Thompson Sampling</div>
                 <div class="stat-value" id="algorithm-score">0</div>
             </div>
             <div class="stat">
@@ -429,7 +429,7 @@
                     <div id="final-player-score">0</div>
                 </div>
                 <div class="algorithm-score">
-                    <div class="algorithm-name">Dan's UCB Algorithm</div>
+                    <div class="algorithm-name">Thompson Sampling</div>
                     <div id="final-algorithm-score">0</div>
                 </div>
                 <div class="algorithm-score">
@@ -442,8 +442,8 @@
                 </div>
             </div>
             <p style="margin-top: 30px; line-height: 1.6; color: #ccc;">
-                This is the multi-armed bandit problem I solved at Amazon to optimize search rankings and A/B tests, 
-                leading to $200M+ in business impact. Want to learn more about the algorithms?
+                This is the multi-armed bandit problem - a classic challenge in machine learning and optimization. 
+                Want to learn more about the algorithms?
             </p>
             <div style="margin-top: 20px;">
                 <button class="control-btn" onclick="closeResults()">Play Again</button>
@@ -559,8 +559,8 @@
                 this.playerPulls[machineIndex]++;
                 this.playerRewards[machineIndex] += reward;
                 
-                // Algorithm makes its decision (UCB1)
-                const algorithmChoice = this.ucb1Algorithm();
+                // Algorithm makes its decision (Thompson Sampling)
+                const algorithmChoice = this.thompsonSamplingAlgorithm();
                 const algorithmReward = Math.random() < this.truePayout[algorithmChoice] ? 1 : 0;
                 this.algorithmScore += algorithmReward;
                 this.algorithmPulls[algorithmChoice]++;
@@ -585,30 +585,80 @@
                 }
             }
             
-            ucb1Algorithm() {
+            thompsonSamplingAlgorithm() {
                 if (this.currentPull === 0) {
                     return 0; // Play first machine initially
                 }
                 
                 let bestMachine = 0;
-                let bestValue = -Infinity;
+                let bestSample = -1;
                 
                 for (let i = 0; i < this.machines; i++) {
                     if (this.algorithmPulls[i] === 0) {
                         return i; // Try unplayed machines first
                     }
                     
-                    const avgReward = this.algorithmRewards[i] / this.algorithmPulls[i];
-                    const confidence = Math.sqrt((2 * Math.log(this.currentPull)) / this.algorithmPulls[i]);
-                    const ucbValue = avgReward + confidence;
+                    // Thompson Sampling: sample from Beta distribution
+                    const successes = this.algorithmRewards[i] + 1; // +1 for prior
+                    const failures = this.algorithmPulls[i] - this.algorithmRewards[i] + 1; // +1 for prior
+                    const sample = this.betaSample(successes, failures);
                     
-                    if (ucbValue > bestValue) {
-                        bestValue = ucbValue;
+                    if (sample > bestSample) {
+                        bestSample = sample;
                         bestMachine = i;
                     }
                 }
                 
                 return bestMachine;
+            }
+            
+            // Simple beta distribution sampling using gamma distributions
+            betaSample(alpha, beta) {
+                const x = this.gammaSample(alpha, 1);
+                const y = this.gammaSample(beta, 1);
+                return x / (x + y);
+            }
+            
+            // Gamma distribution sampling using Marsaglia and Tsang's method (simplified)
+            gammaSample(shape, scale) {
+                if (shape < 1) {
+                    return this.gammaSample(shape + 1, scale) * Math.pow(Math.random(), 1 / shape);
+                }
+                
+                const d = shape - 1/3;
+                const c = 1 / Math.sqrt(9 * d);
+                
+                while (true) {
+                    let x = this.normalSample();
+                    let v = 1 + c * x;
+                    if (v <= 0) continue;
+                    
+                    v = v * v * v;
+                    let u = Math.random();
+                    
+                    if (u < 1 - 0.0331 * x * x * x * x) {
+                        return d * v * scale;
+                    }
+                    
+                    if (Math.log(u) < 0.5 * x * x + d * (1 - v + Math.log(v))) {
+                        return d * v * scale;
+                    }
+                }
+            }
+            
+            // Box-Muller normal distribution sampling
+            normalSample() {
+                if (this.normalSpare !== undefined) {
+                    const spare = this.normalSpare;
+                    this.normalSpare = undefined;
+                    return spare;
+                }
+                
+                const u = Math.random();
+                const v = Math.random();
+                const z = Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+                this.normalSpare = Math.sqrt(-2 * Math.log(u)) * Math.sin(2 * Math.PI * v);
+                return z;
             }
             
             animateMachine(index) {
