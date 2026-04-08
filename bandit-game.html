@@ -345,25 +345,20 @@
             }
         }
         
-        /* Mobile Debugging and Fixes */
+        /* Mobile Responsive Fixes */
         @media (max-width: 768px) {
-            * {
-                border: 1px solid red !important;
-                background: yellow !important;
-                color: black !important;
-                opacity: 1 !important;
-                visibility: visible !important;
-                display: block !important;
+            .slot-machines {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .game-header {
-                background: blue !important;
-                padding: 20px !important;
+            .slot-machine {
+                width: 160px;
+                height: 280px;
             }
             
-            .casino-floor {
-                background: green !important;
-                min-height: 300px !important;
+            .game-title {
+                font-size: 2rem;
             }
         }
     </style>
